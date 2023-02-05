@@ -15,73 +15,74 @@
 		showNavButton="true"
 		title="{i18n>worklistViewTitle}">
 		<semantic:content>
-			<form:SimpleForm  title = "List Table"  layout = "ResponsiveGridLayout" >
-				<List  items = "{/ET_FruitSet}"  width = "500px"  growing = "true"  growingThreshold = "10" >
-					<StandardListItem  title = "{Fruit}"
-										description = "{Descrp}"
-										info = "{Uom}"	
-										infoState = "Error"	/>
-				</List>
-			</form:SimpleForm>
+			<form:SimpleForm  title = "Simple Form"  layout = "ResponsiveGridLayout" >
+				<Panel  headerText = "List"  expandable = "true"  expanded = "true" >
+					<List  items = "{/ET_FruitSet}"  width = "500px"  growing = "true"  growingThreshold = "10" >
+						<StandardListItem  title = "{Fruit}"
+											description = "{Descrp}"
+											info = "{Uom}"	
+											infoState = "Error"	/>
+					</List>
+				</Panel>
 			
-			
-			<form:SimpleForm  title = "Dynamic Table"  layout = "ResponsiveGridLayout" >
-				<Table
-					id="table"
-					width="auto"
-					class="sapUiResponsiveMargin"
-					items="{
-						path: '/ET_FruitSet',
-						sorter: {
-							path: 'Descrp',
-							descending: false
-						}
-					}"
-					noDataText="{worklistView>/tableNoDataText}"
-					busyIndicatorDelay="{worklistView>/tableBusyDelay}"
-					growing="true"
-					growingScrollToLoad="true"
-					updateFinished="onUpdateFinished">
-	
-					<headerToolbar>
-						<Toolbar>
-							<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
-							<ToolbarSpacer />
-							<SearchField
-								id="searchField"
-								tooltip="{i18n>worklistSearchTooltip}"
-								search="onSearch"
-								width="auto">
-							</SearchField>
-						</Toolbar>
-					</headerToolbar>
-	
-					<columns>
-						<Column id="nameColumn">
-							<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
-						</Column>
-						<Column id="unitNumberColumn" hAlign="End">
-							<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
-						</Column>
-					</columns>
-	
-					<items>
-						<ColumnListItem
-							type="Navigation"
-							press="onPress">
-							<cells>
-								<ObjectIdentifier
-									title="{Descrp}"/>
-								<ObjectNumber
-									number="{
-										path: 'Price',
-										formatter: '.formatter.numberUnit'
-									}"
-									unit="{Uom}"/>
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>
+				<Panel  headerText = "Dynamic Table"  expandable = "true"  expanded = "true"  >
+					<Table
+						id="table"
+						width="auto"
+						class="sapUiResponsiveMargin"
+						items="{
+							path: '/ET_FruitSet',
+							sorter: {
+								path: 'Descrp',
+								descending: false
+							}
+						}"
+						noDataText="{worklistView>/tableNoDataText}"
+						busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+						growing="true"
+						growingScrollToLoad="true"
+						updateFinished="onUpdateFinished">
+		
+						<headerToolbar>
+							<Toolbar>
+								<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+								<ToolbarSpacer />
+								<SearchField
+									id="searchField"
+									tooltip="{i18n>worklistSearchTooltip}"
+									search="onSearch"
+									width="auto">
+								</SearchField>
+							</Toolbar>
+						</headerToolbar>
+		
+						<columns>
+							<Column id="nameColumn">
+								<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+							</Column>
+							<Column id="unitNumberColumn" hAlign="End">
+								<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+							</Column>
+						</columns>
+		
+						<items>
+							<ColumnListItem
+								type="Navigation"
+								press="onPress">
+								<cells>
+									<ObjectIdentifier
+										title="{Descrp}"/>
+									<ObjectNumber
+										number="{
+											path: 'Price',
+											formatter: '.formatter.numberUnit'
+										}"
+										unit="{Uom}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</Panel>
 			</form:SimpleForm>
 		</semantic:content>
 
