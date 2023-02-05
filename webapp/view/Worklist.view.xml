@@ -19,10 +19,8 @@
 				<List  items = "{/ET_FruitSet}"  width = "500px"  growing = "true"  growingThreshold = "10" >
 					<StandardListItem  title = "{Fruit}"
 										description = "{Descrp}"
-										counter = "{Price}"
-										info = "{Uom}"
-										infoState = "Success"
-					/>
+										info = "{Uom}"	
+										infoState = "Error"	/>
 				</List>
 			</form:SimpleForm>
 			
